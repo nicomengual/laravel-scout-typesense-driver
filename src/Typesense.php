@@ -156,6 +156,7 @@ class Typesense
      */
     public function importDocuments(Collection $collectionIndex, $documents, string $action = 'upsert'): \Illuminate\Support\Collection
     {
+        $documents = collect($documents)->filter()->toArray();
         $importedDocuments = $collectionIndex->getDocuments()
                                              ->import($documents, ['action' => $action]);
 
